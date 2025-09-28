@@ -85,15 +85,15 @@ function build_rootfs() {
     mmdebstrap --architectures=riscv64 \
     --include="ca-certificates locales dosfstools bash iperf3 revyos-keyring \
         sudo bash-completion network-manager openssh-server systemd-timesyncd cloud-utils" \
-    sid "$CHROOT_TARGET" \
-    "deb https://mirror.iscas.ac.cn/revyos/revyos-addons/ revyos-addons main" \
-    "deb https://mirror.iscas.ac.cn/revyos/revyos-base/ sid main contrib non-free non-free-firmware" 
+    trixie "$CHROOT_TARGET" \
+    "deb https://mirror.iscas.ac.cn/revyos/trixie/revyos-addons/ trixie main" \
+    "deb https://mirror.iscas.ac.cn/revyos/trixie/revyos-base/ trixie main contrib non-free non-free-firmware" 
   else
     mmdebstrap --architectures=riscv64 \
     --include="ca-certificates locales dosfstools bash iperf3 debian-keyring \
         sudo bash-completion network-manager openssh-server systemd-timesyncd cloud-utils" \
-    sid "$CHROOT_TARGET" \
-    "deb https://deb.debian.org/debian/ sid main contrib non-free non-free-firmware"
+    trixie "$CHROOT_TARGET" \
+    "deb https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware"
   fi
 
   chroot $CHROOT_TARGET /bin/bash <<EOF
